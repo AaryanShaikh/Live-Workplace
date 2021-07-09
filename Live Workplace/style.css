@@ -1,0 +1,207 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background: url('bg.png');
+	background-size: cover;
+}
+.box{
+	position: relative;
+}
+.container {
+    position: relative;
+    width: 510px;
+    min-height: 349px;
+    top: 59px;
+    left: 63.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    border: 1px solid transparent;
+}
+#dycalendar{
+	width: 100%;
+	padding: 21px;
+}
+#dycalendar table{
+	width: 100%;
+}
+.dycalendar-month-container .dycalendar-header {
+    position: relative;
+    font-family: 'Dancing Script', cursive;
+    color: #ce1629;
+    font-size: 50px;
+    margin-bottom: 31px;
+    text-shadow: 2px 3px 4px rgb(0 0 0 / 83%);
+}
+#dycalendar table tr:nth-child(1) {
+    color: white;
+    font-weight: 700;
+    text-shadow: 4px 3px 3px rgb(0 0 0 / 57%);
+}
+.dycalendar-month-container .dycalendar-body table tr td {
+    padding: 5px;
+    color: white;
+}
+.dycalendar-month-container .dycalendar-body table tr td:nth-child(1) {
+    padding: 5px;
+    color: red;
+}
+.dycalendar-month-container .dycalendar-today-date, .dycalendar-month-container .dycalendar-target-date {
+    background-color: transparent !important;
+    color: #000;
+    font-weight: 700;
+    border: 2px solid red;
+    border-radius: 50% !important;
+}
+.clock {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(clock.png),#040b0e;
+    background-size: cover;
+    top: -329px;
+    left: 6%;
+    border: 4px solid #010405;
+    border-radius: 50%;
+    box-shadow: 0 -15px 15px rgb(0 0 0 / 57%), 
+    			inset 0 -15px 15px rgb(255 255 255 / 5%), 
+    			0 15px 15px rgb(0 0 0 / 56%), 
+    			inset 0 15px 15px rgb(0 0 0 / 30%);
+}
+.clock:before {
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 10;
+}
+.clock .hour,
+.clock .min,
+.clock .sec{
+	position: absolute;
+}
+.clock .hour .hr{
+	width: 160px;
+	height: 160px;
+}
+.clock .hour .mn{
+	width: 190px;
+	height: 190px;
+}
+.clock .hour .sc{
+	width: 230px;
+	height: 230px;
+}
+.hr,.mn,.sc{
+	display: flex;
+	justify-content: center;
+	/*align-items: center;*/
+	position: relative;
+}
+.hr:before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 80px;
+    background: #de091f;
+    border-radius: 6px 6px 0 0;
+    z-index: 1;
+}
+.mn:before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 90px;
+    background: #fff;
+    border-radius: 9px 9px 0 0;
+    z-index: 2;
+    top: -93px;
+}
+.sc:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 130px;
+    background: #fff;
+    border-radius: 6px 6px 0 0;
+    z-index: 3;
+    top: -104px;
+}
+.dclock span {
+    color: #fff;
+    position: relative;
+    top: -410px;
+    font-size: 59px;
+    left: 46%;
+}
+.dclock #dclockdt {
+    font-weight: lighter;
+    font-size: 18px;
+    margin-left: -4px;
+    text-shadow: 1px 3px 2px rgb(0 0 0);
+}
+.battery {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    left: 49%;
+    top: 54%;
+}
+.battery .batshape {
+    position: relative;
+    border: 3px solid #fff;
+    height: 18px;
+    width: 45px;
+    border-radius: 8px;
+    top: -185px;
+    left: 184%;
+}
+.battery .batshape::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    background: #fff;
+    width: 3px;
+    height: 7px;
+    transform: translateY(-50%);
+    right: -8px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.level {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    overflow: hidden;
+}
+.percent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: #ada2a2;
+    border-radius: 8px;
+}
+.percent2 {
+    position: absolute;
+    top: -926%;
+    left: 211%;
+    font-size: 14px;
+    color: white;
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px black;
+}

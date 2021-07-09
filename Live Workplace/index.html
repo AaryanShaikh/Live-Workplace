@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="dycalendar.css">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+	<title>Live Table</title>
+</head>
+<body>
+	<div class="calendar">
+		<div class="box">
+			<div class="container">
+				<div id="dycalendar"></div>
+			</div>
+		</div>
+	</div>
+	<div class="clock">
+		<div class="hour">
+			<div class="hr" id="hr"></div>
+		</div>
+		<div class="min">
+			<div class="mn" id="mn"></div>
+		</div>
+		<div class="sec">
+			<div class="sc" id="sc"></div>
+		</div>
+	</div>
+	<div class="dclock">
+		<span id="dclock"></span><br>
+		<span id="dclockdt">Welcome Cypher!</span>
+	</div>
+	<div class="battery">
+		<div class="box">
+			<div class="content">
+				<div class="batshape">
+					<div class="level">
+						<div class="percent"></div>
+					</div>
+				</div>
+				<div class="percent2">50%</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="dycalendar.js"></script>
+	<script type="text/javascript">
+		dycalendar.draw({
+			target:'#dycalendar',
+			type:'month',
+			dayformat:'full',
+			monthformat:'full',
+			highlighttargetdate:true
+		})
+		const deg=6;
+		const hr = document.querySelector('#hr');
+		const mn = document.querySelector('#mn');
+		const sc = document.querySelector('#sc');
+		setInterval(()=>{
+			let day = new Date();
+			let hh=day.getHours()*30;
+			let mm=day.getMinutes()*deg;
+			let ss=day.getSeconds()*deg;
+			hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+			mn.style.transform = `rotateZ(${(mm)}deg)`;
+			sc.style.transform = `rotateZ(${(ss)}deg)`;
+			var hours = day.getHours();
+			if (hours > 12) {
+			    hours -= 12;
+			} else if (hours === 0) {
+			   hours = 12;
+			}
+			document.getElementById('dclock').innerHTML = `${String(hours).padStart(2, '0')}:${String(day.getMinutes()).padStart(2, '0')}`;
+			let percent = document.querySelector('.percent');
+			let percentxt = document.querySelector('.percent2');
+			navigator.getBattery().then(function (battery) {
+				percent.style.width = battery.level*100 + '%';
+				percentxt.innerHTML = battery.level*100 + '%';
+				if(battery.charging){
+					percent.style.background = 'lime';
+				}else{
+					percent.style.background = '#ada2a2';
+				}
+			})
+		})
+	</script>
+</body>
+</html>
